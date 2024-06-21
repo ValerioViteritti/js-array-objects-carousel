@@ -8,8 +8,6 @@
 // Milestone 2:
 // Aggiungere il **ciclo infinito** del carosello. Ovvero se la miniatura attiva è la prima e l’utente clicca la freccia verso destra, la miniatura che deve attivarsi sarà l’ultima e viceversa per l’ultima miniatura se l’utente clicca la freccia verso sinistra.
 
-
-
 const images = [ 
     { 
         image: 'img/01.webp', 
@@ -41,6 +39,30 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     } 
 ];
+// Variabile dove inserire le BigPicture dei videogame
+let FotoPrincipale = document.getElementsByClassName('Foto-Container')[0];
+// Variabile dove inserire le SmallPicture dei videogame
+let FotoMini = document.getElementsByClassName('Mini-Foto-container')[0];
+
+let FotoNumero = 0;
+
+images.forEach(Game => {
+    const creaImg = (classe) => {
+        let img = document.createElement('img');
+        img.classList.add(classe);
+        img.src = Game.image;
+        return img;
+    };
+
+    let card = creaImg("Foto-Grande");
+    let cardX = creaImg("Foto-Piccola");
+
+    FotoPrincipale.append(card);
+    FotoMini.append(cardX);
+    FotoNumero++
+
+})
+
 
 
 
