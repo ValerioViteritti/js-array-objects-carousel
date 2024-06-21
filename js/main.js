@@ -102,7 +102,35 @@ function giu() {
     aggiornaFoto(contatore);
 }
 
+// ciclo automatico
 
+let intervalloId
+let inFunzione = false;
+
+const start = () => {
+    if (!inFunzione) {
+        intervalloId = setInterval(su, 2000);
+        inFunzione = true;
+    }
+};
+
+const stop = () => {
+    if (inFunzione) {
+        clearInterval(intervalloId);
+        inFunzione = false;
+    }
+};
+
+const startInverso = () => {
+    if (!inFunzione) {
+        intervalloId = setInterval(giu, 2000);
+        inFunzione = true;
+    }
+};
+
+document.getElementById('start').addEventListener('click', start);
+document.getElementById('stop').addEventListener('click', stop);
+document.getElementById('start-inverso').addEventListener('click', startInverso);
 
 
 
