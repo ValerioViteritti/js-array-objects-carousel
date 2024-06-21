@@ -2,10 +2,20 @@ body{
     background-color: rgb(0, 4, 70);
 }
 
+.bottoni{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
 .Foto-Container {
     height: 500px;
     width: 700px;
     position: relative;
+}
+
+.Testo-in-img{
+    position: absolute;
 }
 
 .Foto-Container img {
@@ -26,17 +36,27 @@ body{
 }
 
 .Mini-Foto-container img {
-    height: 100%;
+    height: calc(100% / 5);
     width: 100%;
     object-fit: cover;
 }
 
+.Mini-Foto-container img.active{
+    border: 4px blue solid;
+}
+
+.Mini-Foto-container img:hover{
+    cursor: pointer;
+}
+
 #Nome-videogame{
     color: aliceblue;
+    background-color: rgba(0, 0, 77, 0.3);
 }
 
 #Descrizione{
     color: aliceblue;
+    background-color: rgba(0, 0, 77, 0.3);
 }
 
 .up, .down {

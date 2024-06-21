@@ -93,12 +93,12 @@ BottoneGiu.addEventListener('click', (e) => {
 });
 
 function su() {
-    contatore = (contatore + 1) % images.length;
+    contatore = (contatore - 1 + images.length) % images.length;
     aggiornaFoto(contatore);
 }
 
 function giu() {
-    contatore = (contatore - 1 + images.length) % images.length;
+    contatore = (contatore + 1) % images.length;
     aggiornaFoto(contatore);
 }
 
@@ -109,7 +109,7 @@ let inFunzione = false;
 
 const start = () => {
     if (!inFunzione) {
-        intervalloId = setInterval(su, 2000);
+        intervalloId = setInterval(giu, 3000);
         inFunzione = true;
     }
 };
@@ -123,7 +123,7 @@ const stop = () => {
 
 const startInverso = () => {
     if (!inFunzione) {
-        intervalloId = setInterval(giu, 2000);
+        intervalloId = setInterval(su, 3000);
         inFunzione = true;
     }
 };
@@ -132,9 +132,12 @@ document.getElementById('start').addEventListener('click', start);
 document.getElementById('stop').addEventListener('click', stop);
 document.getElementById('start-inverso').addEventListener('click', startInverso);
 
-
-
-
+// document.querySelectorAll('.Foto-Piccola').forEach(card => {
+//     card.addEventListener('click', event => {
+//         event.currentTarget.classList.add('active');
+    
+//     });
+// });
 
 
 
