@@ -16,6 +16,7 @@ body{
 
 .Testo-in-img{
     position: absolute;
+    bottom: 0;
 }
 
 .Foto-Container img {

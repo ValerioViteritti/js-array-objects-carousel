@@ -40,34 +40,35 @@ const images = [
 let FotoPrincipale = document.getElementsByClassName('Foto-Container')[0];
 // Variabile dove inserire le SmallPicture dei videogame
 let FotoMini = document.getElementsByClassName('Mini-Foto-container')[0];
-
+// Inizializzazione del contatore delle immagini
 let FotoNumero = 0;
-
+// Ciclo di immagini attraverso l'array
 images.forEach(Game => {
+    // funzione per creare un elemento immagine con una specifica classe
     const creaImg = (classe) => {
         let img = document.createElement('img');
         img.classList.add(classe);
         img.src = Game.image;
         return img;
     };
-
+    // Creazione delle immagini grandi e piccole
     let card = creaImg("Foto-Grande");
     let cardX = creaImg("Foto-Piccola");
-
+    // Aggiunta delle immagini ai rispettivi contenitori
     FotoPrincipale.append(card);
     FotoMini.append(cardX);
     FotoNumero++;
 });
 
-document.documentElement.style.setProperty('--FotoNumero', FotoNumero);
 
+// Variabili per le immagini grandi e piccole
 let BigImage = document.getElementsByClassName('Foto-Grande');
 let SmallImage = document.getElementsByClassName('Foto-Piccola');
 let contatore = 0;
 // Testo da inserire nelle immagini
 let nomeVideogame = document.getElementById('Nome-videogame');
 let descrizione = document.getElementById('Descrizione');
-
+// Funzione per aggiornare le foto visualizzate
 const aggiornaFoto = (indice) => {
     Array.from(BigImage).forEach((foto, i) => {
         foto.classList.toggle('active', i === indice);
@@ -76,12 +77,14 @@ const aggiornaFoto = (indice) => {
     nomeVideogame.textContent = images[indice].title;
     descrizione.textContent = images[indice].text;
 };
-
+// Inizializzazione della visualizzazione con la prima immagine
 aggiornaFoto(contatore);
 
+// Variabili per i bottoni di navigazione
 const BottoneSu = document.querySelector('.bottoneSu');
 const BottoneGiu = document.querySelector('.bottoneGiu');
 
+// Event listener per i bottoni di navigazione
 BottoneSu.addEventListener('click', (e) => {
     e.stopPropagation();
     su();
@@ -91,11 +94,12 @@ BottoneGiu.addEventListener('click', (e) => {
     e.stopPropagation();
     giu();
 });
-
+// Funzione per andare all'immagine precedente
 function su() {
     contatore = (contatore - 1 + images.length) % images.length;
     aggiornaFoto(contatore);
 }
+// Funzione per andare all'immagine successiva
 
 function giu() {
     contatore = (contatore + 1) % images.length;
