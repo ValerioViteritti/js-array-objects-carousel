@@ -1,37 +1,50 @@
+.Foto-Container {
+    height: 500px;
+    width: 700px;
+    position: relative;
+}
 
-img{
+.Foto-Container img {
+    display: none;
     height: 100%;
     width: 100%;
-    object-fit: cover; 
+    object-fit: cover;
 }
 
+.Foto-Container img.active {
+    display: block;
+}
 
+.Mini-Foto-container {
+    height: 500px;
+    width: 300px;
+    position: relative;
+}
 
+.Mini-Foto-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
 
-
-.up{
+.up, .down {
     background-color: rgba(0, 0, 0, 0.2);
     position: absolute;
-    margin-left: auto;
-    margin-right: auto;
     left: 0;
     right: 0;
+    text-align: center;
+    cursor: pointer;
+}
+
+.up {
     top: 0;
-    text-align: center;
-    cursor: pointer;
 }
-.down{
-    background-color: rgba(0, 0, 0, 0.2);
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
+
+.down {
     bottom: 0;
-    text-align: center;
-    cursor: pointer;
 }
-.fa-regular{
+
+.fa-regular {
     background-color: white;
     font-size: 1.4rem;
     border-radius: 15px;

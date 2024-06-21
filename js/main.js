@@ -8,37 +8,34 @@
 // Milestone 2:
 // Aggiungere il **ciclo infinito** del carosello. Ovvero se la miniatura attiva è la prima e l’utente clicca la freccia verso destra, la miniatura che deve attivarsi sarà l’ultima e viceversa per l’ultima miniatura se l’utente clicca la freccia verso sinistra.
 
-const images = [ 
-    { 
-        image: 'img/01.webp', 
-        title: 'Marvel\'s Spiderman Miles Morale', 
+const images = [
+    {
+        image: 'img/01.webp',
+        title: 'Marvel\'s Spiderman Miles Morale',
         text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.',
     },
-
-    { 
-        image: 'img/02.webp', 
-        title: 'Ratchet & Clank: Rift Apart', 
-        text: 'Go dimension-hopping with Ratchet and Clank as they take on an evil emperor from another reality.', 
+    {
+        image: 'img/02.webp',
+        title: 'Ratchet & Clank: Rift Apart',
+        text: 'Go dimension-hopping with Ratchet and Clank as they take on an evil emperor from another reality.',
     },
-
-    { 
-        image: 'img/03.webp', 
-        title: 'Fortnite', 
-        text: "Grab all of your friends and drop into Epic Games Fortnite, a massive 100 - player face - off that combines looting, crafting, shootouts and chaos.", 
+    {
+        image: 'img/03.webp',
+        title: 'Fortnite',
+        text: "Grab all of your friends and drop into Epic Games Fortnite, a massive 100 - player face - off that combines looting, crafting, shootouts and chaos.",
     },
-
-    { 
-        image: 'img/04.webp', 
-        title: 'Stray', 
+    {
+        image: 'img/04.webp',
+        title: 'Stray',
         text: 'Lost, injured and alone, a stray cat must untangle an ancient mystery to escape a long-forgotten city',
     },
-
-    { 
-        image: 'img/05.webp', 
-        title: "Marvel's Avengers", 
+    {
+        image: 'img/05.webp',
+        title: "Marvel's Avengers",
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
-    } 
+    }
 ];
+
 // Variabile dove inserire le BigPicture dei videogame
 let FotoPrincipale = document.getElementsByClassName('Foto-Container')[0];
 // Variabile dove inserire le SmallPicture dei videogame
@@ -59,9 +56,51 @@ images.forEach(Game => {
 
     FotoPrincipale.append(card);
     FotoMini.append(cardX);
-    FotoNumero++
+    FotoNumero++;
+});
 
-})
+document.documentElement.style.setProperty('--FotoNumero', FotoNumero);
+
+let BigImage = document.getElementsByClassName('Foto-Grande');
+let SmallImage = document.getElementsByClassName('Foto-Piccola');
+let contatore = 0;
+// Testo da inserire nelle immagini
+let nomeVideogame = document.getElementById('Nome-videogame');
+let descrizione = document.getElementById('Descrizione');
+
+const aggiornaFoto = (indice) => {
+    Array.from(BigImage).forEach((foto, i) => {
+        foto.classList.toggle('active', i === indice);
+        SmallImage[i].classList.toggle('active', i === indice);
+    });
+    nomeVideogame.textContent = images[indice].title;
+    descrizione.textContent = images[indice].text;
+};
+
+aggiornaFoto(contatore);
+
+const BottoneSu = document.querySelector('.bottoneSu');
+const BottoneGiu = document.querySelector('.bottoneGiu');
+
+BottoneSu.addEventListener('click', (e) => {
+    e.stopPropagation();
+    su();
+});
+
+BottoneGiu.addEventListener('click', (e) => {
+    e.stopPropagation();
+    giu();
+});
+
+function su() {
+    contatore = (contatore + 1) % images.length;
+    aggiornaFoto(contatore);
+}
+
+function giu() {
+    contatore = (contatore - 1 + images.length) % images.length;
+    aggiornaFoto(contatore);
+}
 
 
 
@@ -96,34 +135,3 @@ images.forEach(Game => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-// mi prendo l'elemento di contenitore
-// const itemsContainer = document.querySelector(".item");
-
-// images.forEach((element) => {
-//     const imgxxx = `${element.image}`;
-//     const titlexxx = `${element.title}`;
-//     const textxxx = `${element.text}`;
-//     const imgElement = document.createElement('img');
-//     const titleElement = document.createElement('h2');
-//     const textElement = document.createElement('span');
-//     imgElement.textContent = imgxxx;
-//     titleElement.textContent = titlexxx;
-//     textElement.textContent = textxxx;
-//     itemsContainer.appendChild(imgElement);
-//     itemsContainer.appendChild(titleElement);
-//     itemsContainer.appendChild(textElement);
-  
-//     console.log(imgxxx);
-//     console.log(titlexxx);
-//     console.log(textxxx);
-//   });
